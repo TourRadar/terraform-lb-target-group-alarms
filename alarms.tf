@@ -6,7 +6,7 @@ locals {
 
 resource "aws_cloudwatch_metric_alarm" "HealthyHostCount" {
   count               = var.healthy_host_count_enabled ? 1 : 0
-  alarm_name          = "${var.alarm_prefix}: LB health host count is too low"
+  alarm_name          = "${var.alarm_prefix}: LB health host count is too low for ${local.alarmLbTargetGroup} in ${local.alarmLbName}"
   comparison_operator = "LessThanOrEqualToThreshold"
   evaluation_periods  = var.healthy_host_count_periods
   threshold           = var.healthy_host_count_threshold
@@ -27,7 +27,7 @@ resource "aws_cloudwatch_metric_alarm" "HealthyHostCount" {
 
 resource "aws_cloudwatch_metric_alarm" "TargetResponseTime" {
   count               = var.target_response_time_enabled ? 1 : 0
-  alarm_name          = "${var.alarm_prefix}: Target group resonse time is so slow"
+  alarm_name          = "${var.alarm_prefix}: Target group resonse time is so slow for ${local.alarmLbTargetGroup} in ${local.alarmLbName}"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = var.target_response_time_periods
   threshold           = var.target_response_time_threshold
@@ -48,7 +48,7 @@ resource "aws_cloudwatch_metric_alarm" "TargetResponseTime" {
 
 resource "aws_cloudwatch_metric_alarm" "HTTPCode_Target_4XX_Count" {
   count               = var.http_code_target_4xx_count_enabled ? 1 : 0
-  alarm_name          = "${var.alarm_prefix}: LB 4xx responses"
+  alarm_name          = "${var.alarm_prefix}: LB 4xx responses for ${local.alarmLbTargetGroup} in ${local.alarmLbName}"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = var.http_code_target_4xx_count_periods
   threshold           = var.http_code_target_4xx_count_threshold
@@ -69,7 +69,7 @@ resource "aws_cloudwatch_metric_alarm" "HTTPCode_Target_4XX_Count" {
 
 resource "aws_cloudwatch_metric_alarm" "HTTPCode_Target_5XX_Count" {
   count               = var.http_code_target_5xx_count_enabled ? 1 : 0
-  alarm_name          = "${var.alarm_prefix}: LB 5xx responses"
+  alarm_name          = "${var.alarm_prefix}: LB 5xx responses for ${local.alarmLbTargetGroup} in ${local.alarmLbName}"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = var.http_code_target_5xx_count_periods
   threshold           = var.http_code_target_5xx_count_threshold
