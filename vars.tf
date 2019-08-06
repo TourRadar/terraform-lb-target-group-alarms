@@ -39,6 +39,12 @@ variable "http_code_target_5xx_count_period" {
   default = 60
 }
 
+variable "http_code_target_5xx_count_treat_missing_data" {
+  type    = string
+  default = "notBreaching"
+}
+
+
 
 variable "http_code_target_4xx_count_enabled" {
   type    = bool
@@ -60,6 +66,10 @@ variable "http_code_target_4xx_count_period" {
   default = 60
 }
 
+variable "http_code_target_4xx_count_treat_missing_data" {
+  type    = string
+  default = "notBreaching"
+}
 
 variable "target_response_time_enabled" {
   type    = bool
@@ -81,6 +91,11 @@ variable "target_response_time_period" {
   default = 60
 }
 
+variable "target_response_time_treat_missing_data" {
+  type    = string
+  default = "notBreaching"
+}
+
 
 variable "healthy_host_count_enabled" {
   type    = bool
@@ -100,4 +115,9 @@ variable "healthy_host_count_periods" {
 variable "healthy_host_count_period" {
   type    = number
   default = 60
+}
+
+variable "healthy_host_count_treat_missing_data" {
+  type    = string
+  default = "breaching"
 }
