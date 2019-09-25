@@ -18,15 +18,15 @@ variable "tags" {
   default = {}
 }
 
-
-variable "http_code_target_5xx_count_enabled" {
-  type    = bool
-  default = true
-}
-
-variable "http_code_target_5xx_count_threshold" {
-  type    = number
-  default = 1
+variable "http_code_target_5xx_count_checks" {
+  type = map(number)
+  default = {
+    P1 = 6
+    P2 = 5
+    P3 = 4
+    P4 = 3
+    P5 = 2
+  }
 }
 
 variable "http_code_target_5xx_count_periods" {
@@ -45,15 +45,15 @@ variable "http_code_target_5xx_count_treat_missing_data" {
 }
 
 
-
-variable "http_code_target_4xx_count_enabled" {
-  type    = bool
-  default = true
-}
-
-variable "http_code_target_4xx_count_threshold" {
-  type    = number
-  default = 1
+variable "http_code_target_4xx_count_checks" {
+  type = map(number)
+  default = {
+    P1 = 6
+    P2 = 5
+    P3 = 4
+    P4 = 3
+    P5 = 2
+  }
 }
 
 variable "http_code_target_4xx_count_periods" {
@@ -71,14 +71,16 @@ variable "http_code_target_4xx_count_treat_missing_data" {
   default = "notBreaching"
 }
 
-variable "target_response_time_enabled" {
-  type    = bool
-  default = true
-}
 
-variable "target_response_time_threshold" {
-  type    = number
-  default = 0.3
+variable "target_response_time_checks" {
+  type = map(number)
+  default = {
+    P1 = 0.7
+    P2 = 0.6
+    P3 = 0.5
+    P4 = 0.4
+    P5 = 0.3
+  }
 }
 
 variable "target_response_time_periods" {
