@@ -24,8 +24,6 @@ variable "http_code_target_5xx_count_checks" {
     P1 = 6
     P2 = 5
     P3 = 4
-    P4 = 3
-    P5 = 2
   }
 }
 
@@ -51,8 +49,6 @@ variable "http_code_target_4xx_count_checks" {
     P1 = 6
     P2 = 5
     P3 = 4
-    P4 = 3
-    P5 = 2
   }
 }
 
@@ -78,8 +74,6 @@ variable "target_response_time_checks" {
     P1 = 0.7
     P2 = 0.6
     P3 = 0.5
-    P4 = 0.4
-    P5 = 0.3
   }
 }
 
