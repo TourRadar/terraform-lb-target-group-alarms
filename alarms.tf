@@ -17,6 +17,7 @@ resource "aws_cloudwatch_metric_alarm" "healthy_host_count" {
   alarm_description   = "Priority: P1 Health host count is too low"
   treat_missing_data  = var.healthy_host_count_treat_missing_data
   alarm_actions       = var.actions
+  ok_actions          = var.ok_actions
   tags                = var.tags
 
   dimensions = {
@@ -38,6 +39,7 @@ resource "aws_cloudwatch_metric_alarm" "target_response_time" {
   alarm_description   = "Priority: ${each.key} Generating response from your application is too slow. It should not increase ${var.target_response_time_period}s"
   treat_missing_data  = var.target_response_time_treat_missing_data
   alarm_actions       = var.actions
+  ok_actions          = var.ok_actions
   tags                = var.tags
 
   dimensions = {
@@ -59,6 +61,7 @@ resource "aws_cloudwatch_metric_alarm" "http_code_target_4xx_count" {
   alarm_description   = "Priority: ${each.key} Your loadbalancer returns 4xx errors. Please check access logs"
   treat_missing_data  = var.http_code_target_4xx_count_treat_missing_data
   alarm_actions       = var.actions
+  ok_actions          = var.ok_actions
   tags                = var.tags
 
   dimensions = {
@@ -80,6 +83,7 @@ resource "aws_cloudwatch_metric_alarm" "http_code_target_5xx_count" {
   alarm_description   = "Priority: ${each.key} Your loadbalancer returns 5xx errors. In is critical error for application. Please check application logs"
   treat_missing_data  = var.http_code_target_5xx_count_treat_missing_data
   alarm_actions       = var.actions
+  ok_actions          = var.ok_actions
   tags                = var.tags
 
   dimensions = {
